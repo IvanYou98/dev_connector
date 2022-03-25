@@ -1,20 +1,23 @@
 import './App.css';
-import {Fragment} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import {Fragment} from "react";
 
 const App = () => {
     return (
-        <Fragment>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Fragment>
                 <Navbar/>
                 <Routes>
                     <Route exact path='/' element={<Landing/>}/>
+                    <Route exact path='/login' element={<Login/>}/>
+                    <Route exact path='/register' element={<Register/>}/>
                 </Routes>
-            </BrowserRouter>
-        </Fragment>
-
+            </Fragment>
+        </BrowserRouter>
     );
 }
 
