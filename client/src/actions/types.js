@@ -11,3 +11,5 @@ export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERR = 'PROFILE_ERR';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const SAVE_PROFILE = 'SAVE_PROFILE';
+export const ADD_EXP = 'ADD_EXP';
+export const ADD_EDU = 'ADD_EDU';
