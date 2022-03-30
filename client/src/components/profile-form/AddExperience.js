@@ -76,9 +76,7 @@ function AddExperience({addExperience}) {
                             onChange={e => {
                                 setFormData({...formData, current: !current});
                                 toggleDisabled(!toDateDisabled);
-                            }
-                            }
-
+                            }}
                         /> Current Job</p>
                 </div>
                 <div className="form-group">

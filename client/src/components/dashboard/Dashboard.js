@@ -1,11 +1,12 @@
 import React, {Fragment, useEffect} from 'react';
 import {connect} from "react-redux";
 import {getCurrentProfile} from "../../actions/profile";
-import profile from "../../reducers/profile";
 import {Link} from "react-router-dom";
 import DashboardActions from "./DashboardActions";
+import ExperienceList from "./ExperienceList";
+import EducationList from "./EducationList";
 
-const Dashboard = ({getCurrentProfile, auth:{user}, profile: {myProfile, loading}}) => {
+const Dashboard = ({getCurrentProfile, auth: {user}, profile: {myProfile, loading}}) => {
     useEffect(() => {
         getCurrentProfile()
     }, [])
@@ -21,6 +22,8 @@ const Dashboard = ({getCurrentProfile, auth:{user}, profile: {myProfile, loading
                     </p>
                     {myProfile !== null ? <Fragment>
                             <DashboardActions/>
+                            <ExperienceList/>
+                            <EducationList/>
                         </Fragment> :
                         <Fragment>
                             <p>You have not yet setup a profile, please add some info </p>
