@@ -1,6 +1,10 @@
 import React, {Fragment, useState} from 'react';
+import {connect} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {saveProfile} from "../../actions/profile";
 
-const CreateProfile = props => {
+const CreateProfile = ({saveProfile}) => {
+    let navigate = useNavigate();
     const [formData, setFormData] = useState({
         status: '',
         company: '',
@@ -34,6 +38,10 @@ const CreateProfile = props => {
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+    const onSubmit = e => {
+        e.preventDefault();
+        saveProfile(formData, navigate, false);
+    }
 
 
     return (
@@ -46,7 +54,7 @@ const CreateProfile = props => {
                 profile stand out
             </p>
             <small>* = required field</small>
-            <form className="form">
+            <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
                     <select name="status" value={status} onChange={e => onChange(e)}>
                         <option value="0">* Select Professional Status</option>
@@ -149,5 +157,4 @@ const CreateProfile = props => {
     );
 };
 
-
-export default CreateProfile;
+export default connect(null, {saveProfile} )(CreateProfile) ;
