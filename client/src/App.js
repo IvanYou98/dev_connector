@@ -13,6 +13,7 @@ import store from "./store";
 import {loadUser} from "./actions/auth";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import CreateProfile from "./components/profile-form/CreateProfile";
+import EditProfile from "./components/profile-form/EditProfile";
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
                         <Route element={<PrivateRoute/>}>
                             <Route exact path='/dashboard' element={<Dashboard/>}/>
                             <Route exact path='/create-profile' element={<CreateProfile/>}/>
+                            <Route exact path='/edit-profile' element={<EditProfile/>}/>
                         </Route>
                     </Routes>
                 </Fragment>

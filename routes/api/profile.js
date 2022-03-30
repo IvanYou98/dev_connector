@@ -61,7 +61,7 @@ router.post('/', [auth, [
         const profileFields = {};
         profileFields.user = req.userId;
         profileFields.status = status;
-        profileFields.skills = skills.split(',').map(skill => skill.trim())
+        profileFields.skills = skills.toString().split(',').map(skill => skill.trim())
 
         if (company) profileFields.company = company;
         if (website) profileFields.website = website;

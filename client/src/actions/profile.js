@@ -34,6 +34,7 @@ export const saveProfile = (formData, navigate, edit = false) => async dispatch 
                 'Content-Type': 'application/json'
             }
         }
+
         const res = await axios.post('/api/profile', formData, config);
         dispatch({
             type: SAVE_PROFILE,
