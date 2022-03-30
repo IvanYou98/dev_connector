@@ -3,7 +3,7 @@ import {setAlert} from "./alert";
 
 import {
     ADD_EDU,
-    ADD_EXP,
+    ADD_EXP, DEL_EDU, DEL_EXP,
     GET_PROFILE,
     PROFILE_ERR,
     SAVE_PROFILE,
@@ -110,6 +110,44 @@ export const addEducation = (formData, navigate) => async dispatch => {
         if (errors) {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
         }
+        dispatch({
+            type: PROFILE_ERR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        })
+    }
+}
+
+export const deleteExperience = (experience_id) => async dispatch => {
+    try {
+        const res = await axios.delete(`api/profile/experience/${experience_id}`);
+        dispatch({
+            type: DEL_EXP,
+            payload: res.data
+        });
+        dispatch(setAlert('Experience Deleted', "success"));
+    } catch (err) {
+        dispatch({
+            type: PROFILE_ERR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        })
+    }
+}
+
+export const deleteEducation = (education_id) => async dispatch => {
+    try {
+        const res = await axios.delete(`api/profile/education/${education_id}`);
+        dispatch({
+            type: DEL_EDU,
+            payload: res.data
+        });
+        dispatch(setAlert('Education Deleted', "success"));
+    } catch (err) {
         dispatch({
             type: PROFILE_ERR,
             payload: {

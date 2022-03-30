@@ -1,8 +1,9 @@
 import React, {Fragment} from 'react';
 import {connect} from "react-redux";
 import Moment from "react-moment";
+import {deleteEducation} from "../../actions/profile";
 
-function EducationList({educations}) {
+function EducationList({educations, deleteEducation}) {
 
     const educationList = educations.map(edu => (
         <tr key={edu._id}>
@@ -15,7 +16,7 @@ function EducationList({educations}) {
             }
             </td>
             <td>
-                <button className='btn btn-danger'>Delete</button>
+                <button onClick={() => deleteEducation(edu._id)} className='btn btn-danger'>Delete</button>
             </td>
         </tr>
     ))
@@ -42,4 +43,4 @@ const mapStateToProps = state => ({
     educations: state.profile.myProfile.education
 })
 
-export default connect(mapStateToProps)(EducationList);
+export default connect(mapStateToProps, {deleteEducation})(EducationList);
