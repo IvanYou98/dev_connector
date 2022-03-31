@@ -7,6 +7,7 @@ import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";
 import profile from "../../reducers/profile";
 import ProfileEducation from "./ProfileEducation";
+import ProfileGithub from "./ProfileGithub";
 
 
 const Profile = ({profile: {myProfile, loading}, auth, getProfileById}) => {
@@ -32,7 +33,7 @@ const Profile = ({profile: {myProfile, loading}, auth, getProfileById}) => {
                         <div className="profile-exp bg-white p-2">
                             <h2 className="text-primary">Experience</h2>
                             {myProfile.experience.length > 0 ? (myProfile.experience.map(exp => (
-                                    <Fragment key = {exp._id}>
+                                    <Fragment key={exp._id}>
                                         <ProfileExperience experience={exp}/>
                                     </Fragment>
                                 ))
@@ -43,12 +44,17 @@ const Profile = ({profile: {myProfile, loading}, auth, getProfileById}) => {
                         <div className="profile-edu bg-white p-2">
                             <h2 className="text-primary">Education</h2>
                             {myProfile.education.length > 0 ? (myProfile.education.map(edu => (
-                                <Fragment key = {edu._id}>
-                                    <ProfileEducation edu={edu} />
-                                </Fragment>
+                                    <Fragment key={edu._id}>
+                                        <ProfileEducation edu={edu}/>
+                                    </Fragment>
                                 ))
-                                ) : (<h4>No education credentials</h4>)}
+                            ) : (<h4>No education credentials</h4>)}
                         </div>
+                        {
+                            myProfile.githubUsername && (
+                                <ProfileGithub username={myProfile.githubUsername}/>
+                            )
+                        }
                     </div>
                 </Fragment>
             }

@@ -70,7 +70,7 @@ router.post('/', [auth, [
 
         // Build social object
         profileFields.social = {};
-        if (githubUsername) profileFields.social.githubUsername = githubUsername;
+        if (githubUsername) profileFields.githubUsername = githubUsername;
         if (youtube) profileFields.social.youtube = youtube;
         if (facebook) profileFields.social.facebook = facebook;
         if (twitter) profileFields.social.twitter = twitter;
