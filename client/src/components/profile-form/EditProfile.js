@@ -61,6 +61,7 @@ const EditProfile = ({profile: {myProfile, loading}, saveProfile, getCurrentProf
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
     const onSubmit = e => {
         e.preventDefault();
+        console.log(formData);
         saveProfile(formData, navigate, true);
     }
 

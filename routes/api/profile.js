@@ -66,6 +66,7 @@ router.post('/', [auth, [
         if (company) profileFields.company = company;
         if (website) profileFields.website = website;
         if (location) profileFields.location = location;
+        if (bio) profileFields.bio = bio;
 
         // Build social object
         profileFields.social = {};
