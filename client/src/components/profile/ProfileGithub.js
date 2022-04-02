@@ -16,8 +16,8 @@ const ProfileGithub = ({repos, username, getGithubRepos}) => {
             </h2>
             {repos === null ? <i className="fa fa-spinner"/> :
                 <Fragment>
-                    {repos.map(repo => (
-                        <div key={repo._id} className="repo bg-white p-1 my-1">
+                    {repos.map((repo,idx) => (
+                        <div key={idx} className="repo bg-white p-1 my-1">
                             <div>
                                 <h4><a href={repo.html_url} target="_blank"
                                        rel="noopener noreferrer">{repo.name}</a></h4>

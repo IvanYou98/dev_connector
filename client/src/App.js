@@ -19,6 +19,8 @@ import AddEducation from "./components/profile-form/AddEducation";
 import ProfileList from "./components/profiles/ProfileList";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
+import PostForm from "./components/posts/PostForm";
+import Post from "./components/posts/Post";
 
 
 const App = () => {
@@ -44,6 +46,7 @@ const App = () => {
                             <Route exact path='/edit-profile' element={<EditProfile/>}/>
                             <Route exact path='/add-experience' element={<AddExperience/>}/>
                             <Route exact path='/add-education' element={<AddEducation/>}/>
+                            <Route exact path='/posts/:postId' element={<Post/>}/>
                         </Route>
                     </Routes>
                 </Fragment>

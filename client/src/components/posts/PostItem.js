@@ -9,14 +9,14 @@ const PostItem = ({addLike, deletePost, removeLike, post: {_id, text, name, avat
     return (
         <div className="post bg-white p-1 my-1">
             <div>
-                <a href="profile.html">
+                <Link to={`/profile/${user}`}>
                     <img
                         className="round-img"
                         src={avatar}
                         alt=""
                     />
                     <h4>{name}</h4>
-                </a>
+                </Link>
             </div>
             <div>
                 <p className="my-1">
@@ -34,7 +34,7 @@ const PostItem = ({addLike, deletePost, removeLike, post: {_id, text, name, avat
                 <button type="button" className="btn btn-light" onClick={e => removeLike(_id)}>
                     <i className="fas fa-thumbs-down"/>
                 </button>
-                <Link to={`/post/${_id}`} className="btn btn-primary">
+                <Link to={`/posts/${_id}`} className="btn btn-primary">
                     Discussion
                     {comments.length > 0 && (
                         <span className='comment-count'>{comments.length}</span>
