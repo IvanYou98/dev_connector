@@ -16,4 +16,6 @@ export const ADD_EXP = 'ADD_EXP';
 export const ADD_EDU = 'ADD_EDU';
 export const DEL_EXP = 'DEL_EXP';
 export const DEL_EDU = 'DEL_EDU';
-export const GET_REPOS = 'GET_REPOS'
+export const GET_REPOS = 'GET_REPOS';
+export const GET_POSTS = 'GET_POSTS';
+export const POST_ERROR = 'POST_ERROR';
