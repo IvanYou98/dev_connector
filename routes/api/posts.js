@@ -101,7 +101,7 @@ router.put('/unlike/:post_id', auth,
             const post = await Post.findById(req.params.post_id);
             // check if the book has already been liked by the user
             if (post.likes.filter(like => like.user.toString() === req.userId).length === 0) {
-                res.json({msg: 'Post has not yet been liked'});
+                return res.status(400).json({msg: 'Post has not yet been liked'});
             }
             post.likes = post.likes.filter(like => like.user.toString() !== req.userId);
             post.save();
