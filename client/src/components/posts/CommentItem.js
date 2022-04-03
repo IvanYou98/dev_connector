@@ -2,9 +2,10 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import Moment from "react-moment";
+import {deleteComment} from "../../actions/post";
 
 
-const CommentItem = ({auth, comment: {_id, text, name, avatar, user, date}, postId}) => {
+const CommentItem = ({auth, deleteComment, comment: {_id, text, name, avatar, user, date}, postId}) => {
     return (
         <div className="post bg-white p-1 my-1">
             <div>
@@ -24,6 +25,12 @@ const CommentItem = ({auth, comment: {_id, text, name, avatar, user, date}, post
                 <p className="post-date">
                     Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
                 </p>
+                {!auth.loading && user === auth.user._id && (
+                    <button onClick={e => deleteComment(postId, _id)} type="button" className="btn btn-danger">
+                        <i className="fas fa-times"/>
+                    </button>
+                )
+                }
             </div>
         </div>
     );
@@ -35,4 +42,4 @@ const mapStateToProps = state => (
     }
 )
 
-export default  connect(mapStateToProps, {})(CommentItem);
+export default  connect(mapStateToProps, {deleteComment})(CommentItem);

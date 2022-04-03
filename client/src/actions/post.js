@@ -6,7 +6,7 @@ import {
     ADD_POST,
     DELETE_POST, GET_POST,
     GET_POSTS,
-    POST_ERROR, UPDATE_LIKES
+    POST_ERROR, REMOVE_COMMENT, UPDATE_LIKES
 } from "./types";
 
 // Get posts
@@ -155,6 +155,27 @@ export const addComment = (postId, formData) => async dispatch => {
             }
         })
         dispatch(setAlert('Comment Created', 'success'))
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        })
+    }
+}
+
+
+// Delete a comment if it is owned by the login user
+export const deleteComment = (postId, commentId) => async dispatch => {
+    try {
+        await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+        dispatch({
+            type: REMOVE_COMMENT,
+            payload: {commentId}
+        })
+        dispatch(setAlert('Comment Removed', 'success'))
     } catch (err) {
         dispatch({
             type: POST_ERROR,
