@@ -14,7 +14,6 @@ connectDB();
 //     res.send('API running');
 // }))
 
-
 // define route
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/auth', require('./routes/api/auth'))
