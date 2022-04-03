@@ -1,5 +1,5 @@
 import React from 'react';
-import {ADD_POST, DELETE_POST, GET_POST, GET_POSTS, POST_ERROR, UPDATE_LIKES} from "../actions/types";
+import {ADD_COMMENT, ADD_POST, DELETE_POST, GET_POST, GET_POSTS, POST_ERROR, UPDATE_LIKES} from "../actions/types";
 
 const initialState = {
     posts: [],
@@ -8,10 +8,10 @@ const initialState = {
     error: {}
 }
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
     const {type, payload} = action;
 
-    switch (type){
+    switch (type) {
         case DELETE_POST:
             return {
                 ...state,
@@ -35,6 +35,16 @@ export default function(state = initialState, action) {
                 ...state,
                 loading: false,
                 posts: [payload, ...state.posts]
+            }
+        case ADD_COMMENT:
+            return {
+                ...state,
+                loading: false,
+                posts: state.posts.map(post => post._id === payload.postId ?
+                    ({
+                        ...post,
+                        comments: payload.comments
+                    }) : post)
             }
         case POST_ERROR:
             return {

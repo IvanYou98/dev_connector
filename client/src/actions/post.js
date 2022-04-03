@@ -2,6 +2,7 @@ import axios from "axios";
 import {setAlert} from "./alert";
 
 import {
+    ADD_COMMENT,
     ADD_POST,
     DELETE_POST, GET_POST,
     GET_POSTS,
@@ -30,7 +31,6 @@ export const getPosts = () => async dispatch => {
 // Get a single post
 export const getPost = postId => async dispatch => {
     try {
-        console.log('Sending axios request...')
         const res = await axios.get(`/api/posts/${postId}`);
         dispatch({
             type: GET_POST,
@@ -129,6 +129,32 @@ export const addPost = formData => async dispatch => {
             payload: res.data
         })
         dispatch(setAlert('Post Created', 'success'))
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        })
+    }
+}
+
+// Add a comment
+export const addComment = (postId, formData) => async dispatch => {
+    try {
+        const config = {
+            headers: {'Content-Type': 'application/json'}
+        }
+        const res =  await axios.post(`/api/posts/comment/${postId}`, formData, config);
+        dispatch({
+            type: ADD_COMMENT,
+            payload: {
+                comments: res.data,
+                postId
+            }
+        })
+        dispatch(setAlert('Comment Created', 'success'))
     } catch (err) {
         dispatch({
             type: POST_ERROR,

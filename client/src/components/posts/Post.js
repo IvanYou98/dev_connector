@@ -2,13 +2,13 @@ import React, {Fragment, useEffect} from 'react';
 import {connect} from "react-redux";
 import {getPost} from "../../actions/post";
 import {Link, useParams} from "react-router-dom";
+import CommentForm from "./CommentForm";
 
 const Post = ({post: {selectedPost, loading}, getPost}) => {
     const {postId} = useParams();
 
     useEffect(() => {
         getPost(postId);
-        console.log('After getting post')
     }, [])
 
 
@@ -33,6 +33,7 @@ const Post = ({post: {selectedPost, loading}, getPost}) => {
                             </p>
                         </div>
                     </div>
+                    <CommentForm postId={postId}/>
                 </Fragment>
             }
         </section>
