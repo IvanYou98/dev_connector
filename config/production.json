@@ -1,0 +1,7 @@
+{
+  "mongoURI": "mongodb+srv://ivanyou:yyf19980710@devconnector.etrhu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "jwtToken": "mysecrettoken",
+  "githubClientId": "c37ec2e7c8d6d4b32287",
+  "githubSecret": "3731f962310eb6247c5a346c5070706318203b9f",
+  "baseURL": "http://localhost:8720"
+}
